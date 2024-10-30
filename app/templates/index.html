@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Staff List</h2>
+<ul>
+    {% for staff in staff %}
+    <li>{{ staff.name }} - Preferred Shift: {{ staff.preferences['shift'] }}</li>
+    {% endfor %}
+</ul>
+<form method="POST" action="{{ url_for('schedule') }}">
+    <button type="submit">Generate Schedule</button>
+</form>
+
+{% endblock %}

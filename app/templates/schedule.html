@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Generated Schedule</h2>
+
+{% if schedule %}
+<ul>
+    {% for staff, shift in schedule.items() %}
+    <li>{{ staff }}: {{ shift }}</li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No schedule generated yet. Click the button to generate a schedule.</p>
+{% endif %}
+
+<form method="POST" action="{{ url_for('schedule') }}">
+    <button type="submit">Generate Schedule</button>
+</form>
+
+<a href="{{ url_for('index') }}">Go Back</a>
+{% endblock %}
